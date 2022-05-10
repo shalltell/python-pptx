@@ -46,7 +46,7 @@ class FontFiles(object):
         Return a sequence of directory paths likely to contain fonts on the
         current platform.
         """
-        if sys.platform.startswith("darwin"):
+        if sys.platform.startswith("darwin") or sys.platform.startswith("linux"):
             return cls._os_x_font_directories()
         if sys.platform.startswith("win32"):
             return cls._windows_font_directories()
@@ -79,6 +79,9 @@ class FontFiles(object):
             "/Library/Fonts",
             "/Network/Library/Fonts",
             "/System/Library/Fonts",
+            "/usr/share/fonts/truetype/msttcorefonts",
+            "/usr/share/fonts/truetype/liberation",
+            "/usr/share/fonts/truetype/dejavu",
         ]
         home = os.environ.get("HOME")
         if home is not None:
